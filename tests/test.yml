@@ -1,0 +1,10 @@
+- hosts: localhost
+  connection: local
+  vars:
+    identity_groups:
+      - name: test
+    identity_users:
+      - name: test
+        group: test
+  roles:
+    - identities
