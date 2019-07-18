@@ -1,0 +1,16 @@
+- hosts: all
+  roles:
+    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
+      identity_groups:
+        - name: group1
+        - name: group2
+      identity_users:
+        - name: user1
+          group: group1
+        - name: user2
+          group: group2
+          groups:
+            - group1
+        - name: test
+        - name: test2
+          uid: 1410

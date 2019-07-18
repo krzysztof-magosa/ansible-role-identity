@@ -1,0 +1,8 @@
+# Workaround for lack of support for Alpine adduser/addgroup utils in Ansible < 2.8
+# See https://github.com/ansible/ansible/issues/23944 for more details.
+- name: Install shadow utils
+  package:
+    name: shadow
+  when:
+    - ansible_facts.os_family == 'Alpine'
+    - ansible_version.full is version('2.8', '<')
